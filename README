@@ -1,0 +1,34 @@
+PHP Specs
+
+An extension to http://www.simpletest.org/ facilitating a BDD style inspired by Scala Specs and the Jasmine javascript test framework.
+
+A spec consists of a file ending in 'Spec.php' looking like:
+
+$describe("A class",function($it){
+	$it("Must construct",function($expect){
+		$obj = new Object();
+		$expect($obj)->toBeTrue();
+	});
+});
+
+See the test_specs folder for more examples. 
+
+Installation:
+
+Download and extract simple test into your phpspecs folder:
+
+http://sourceforge.net/projects/simpletest/files/simpletest/simpletest_1.1/simpletest_1.1alpha2.tar.gz/download
+
+Run:
+
+php phpspec.php /path/to/dir/with/tests
+
+Matchers:
+
+In theory all the existing simple test matchers are supported. The object returned by the $expect function implements a __call magic method which removes 'to' or 'toBe' from the beginning of the method name and tries to construct an expectation by adding 'Expectation' on to the remainder of the method name e.g:
+
+$expect(1)->toBeTrue() -> 'True' -> 'TrueExpectation' (Line 163 of simpletest/expectation.php)
+
+Parameters for the expectation constructors can also be passed in the natural manner:
+
+$expect(1)->toBeWithinMargin(0,2) -> new WithinMarginExpectation(0,2)

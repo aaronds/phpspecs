@@ -29,7 +29,7 @@ class ItExpectation {
 	 */
 
 	public function __call($name,$args){
-		$expectationName = preg_replace("/^(toBe|to)/","",$name) . "Expectation";
+		$expectationName = preg_replace("/^(toBe|to|is)/","",$name) . "Expectation";
 
 		if(empty($args)){
 			$expObj  = new $expectationName();

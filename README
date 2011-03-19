@@ -21,6 +21,8 @@ Download and extract simple test into your phpspecs folder:
 
 http://sourceforge.net/projects/simpletest/files/simpletest/simpletest_1.1/simpletest_1.1alpha2.tar.gz/download
 
+You may need to create an empty file 'simpletest/arguments.php' if you get errors like file not found. 
+
 Run:
 
 php phpspec.php /path/to/dir/with/tests
